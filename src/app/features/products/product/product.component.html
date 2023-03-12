@@ -1,0 +1,30 @@
+<section class="tea-sets pt-4 mb-5">
+
+  <div class="container-lg overflow-hidden">
+    <h2 class="text-center fw-bold mb-2">{{product.title}}</h2>
+
+    <div class="tea-sets__cards row g-3">
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="p-0">
+          <div class="product-card col-lg-4 rounded mx-auto d-block">
+            <img src="{{product.image}}" class="card-img-top" alt="Tea">
+          </div>
+          <h4 class="card-title fw-bold text-danger text-center m-lg-2">{{product.price}} руб.</h4>
+          <div class="card card-body col-lg-8 rounded mx-auto d-block">
+            <p class="card-text text-justify">
+              {{product.description}}
+            </p>
+            <a routerLink="/order" [queryParams]="{product: product.title}" class="btn btn-primary stretched-link col-5 hvr-trim rounded mx-auto d-block">Купить</a>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="loading" class="loader-bg">
+        <div class="loader"></div>
+      </div>
+
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,127 @@
+<section class="order">
+
+  <div class="container d-flex pt-5 mb-5 justify-content-center align-items-center wow animate__zoomIn">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center fw-bold mb-5">Сделать заказ</h2>
+
+        <form method="post" [formGroup]="signInForm">
+
+          <div class="form-row row mb-4">
+            <div class="form-group col-lg-12 col-md-12">
+              <label for="inputAddress" class="mb-2">Товар</label>
+              <input formControlName="product"
+                     [attr.disabled]="signInForm.value"
+                     type="text" class="form-control input-text" id="inputProduct" name="product">
+            </div>
+          </div>
+
+          <div class="form-row row mb-1">
+            <div class="form-group col-lg-4 col-md-4 mb-2">
+              <label for="inputName" class="mb-2">Имя</label>
+              <input formControlName="name"
+                     [class] = "{'border-danger': name?.invalid && (name?.dirty || name?.touched)}"
+                     type="text" class="form-control input-text" id="inputName" data-value="Имя" name="name">
+
+              <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                <div class="input-error text-danger" *ngIf="name?.errors?.['required']">
+                  *Введите имя
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group col-lg-4 col-md-4 mb-2">
+              <label for="inputLastName" class="mb-2">Фамилия</label>
+              <input formControlName="last_name"
+                     [class] = "{'border-danger': last_name?.invalid && (last_name?.dirty || last_name?.touched)}"
+                     type="text" class="form-control input-text" id="inputLastName" name="lastName">
+              <div *ngIf="last_name?.invalid && (last_name?.dirty || last_name?.touched)">
+                <div class="input-error text-danger" *ngIf="last_name?.errors?.['required']">
+                  *Введите фамилию
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-lg-4 col-md-4 mb-2">
+              <label for="inputPhone" class="mb-2">Телефон</label>
+              <input formControlName="phone"
+                     [class] = "{'border-danger': phone?.invalid && (phone?.dirty || phone?.touched)}"
+                     type="text" class="form-control input-text" id="inputPhone" name="phone">
+              <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+                <div class="input-error text-danger" *ngIf="phone?.errors?.['required']">
+                  *Укажите номер телефона
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row row mb-1">
+            <div class="form-group col-lg-6 col-md-6 mb-2">
+              <label for="inputCountry" class="mb-2">Страна</label>
+              <input formControlName="country"
+                     [class] = "{'border-danger': country?.invalid && (country?.dirty || country?.touched)}"
+                     type="text" class="form-control input-text" id="inputCountry" name="country">
+              <div *ngIf="country?.invalid && (country?.dirty || country?.touched)">
+                <div class="input-error text-danger" *ngIf="country?.errors?.['required']">
+                  *Укажите страну
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 mb-2">
+              <label for="inputIndex" class="mb-2">Индекс</label>
+              <input formControlName="zip" required
+                     [class] = "{'border-danger': zip?.invalid && (zip?.dirty || zip?.touched)}"
+                     type="text" class="form-control input-text" id="inputIndex" oninput="changeHandler(this)" maxlength="6" name="zip">
+              <div *ngIf="zip?.invalid && (zip?.dirty || zip?.touched)">
+                <div class="input-error text-danger" *ngIf="zip?.errors?.['required']">
+                  *Укажите индекс
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row row mb-4">
+            <div class="form-group col-lg-12 col-md-12">
+              <label for="inputAddress" class="mb-2">Адрес</label>
+              <input formControlName="address" required
+                     [class] = "{'border-danger': address?.invalid && (address?.dirty || address?.touched)}"
+                     type="text" class="form-control input-text" id="inputAddress" name="address">
+              <div *ngIf="address?.invalid && (address?.dirty || address?.touched)">
+                <div class="input-error text-danger" *ngIf="address?.errors?.['required']">
+                  *Укажите адрес
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row row mb-4">
+            <div class="form-group col-lg-12 col-md-12">
+              <label for="inputAddress" class="mb-2">Комментарий</label>
+              <textarea formControlName="comment"
+                        type="text" class="form-control input-text" name="comment"></textarea>
+            </div>
+          </div>
+
+          <button (click)="createOrder()" type="submit"
+                  class="btn btn-primary col-lg-3 col-md-3 col-sm-12 col-12 hvr-trim">Отправить</button>
+          <div *ngIf="orderButton">
+            <div class="input-error text-danger">
+              Произошла ошибка. Попробуйте еще раз.
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="popup-bg" *ngIf="modal">
+  <div class="popup order">
+    <div class="close" (click)="closePopup()" [routerLink]="'/'">X</div>
+    <div class="popup-title fs-4 ">
+      Спасибо за заказ!
+    </div>
+  </div>
+</div>
