@@ -11,6 +11,7 @@ import {ProductsModule} from "./features/products/products.module";
 import {MainModule} from "./features/main/main.module";
 import {OrderModule} from "./features/order/order.module";
 import {SharedModule} from "./shared/shared.module";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {SharedModule} from "./shared/shared.module";
     OrderModule,
     SharedModule,
     AppRoutingModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

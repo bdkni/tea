@@ -177,7 +177,7 @@ app-root {
 .loader {
   border: 5px solid #f3f3f3;
   border-top: 5px solid #0d6efd;
-  border-radius: 50%;
+  border-radius: 50git%;
   width: 120px;
   height: 120px;
   animation: spin 1s linear infinite;
@@ -191,3 +191,6 @@ app-root {
     transform: rotate(360deg);
   }
 }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
